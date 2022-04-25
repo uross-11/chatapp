@@ -85,7 +85,7 @@ const ChatRoom = () => {
 
       <form onSubmit={sendMessage}>
         <input value={formValue} onChange={e => setFormValue(e.target.value)} />
-        <button type='submit'>submit</button>
+        <button type='submit' disabled={!formValue}>submit</button>
       </form>
     </>
   )
@@ -94,7 +94,7 @@ const ChatRoom = () => {
 const ChatMessage = (props) => {
   const { text, uid, photoURL } = props.message;
 
-  const messageClass = uid == auth.currentUser.uid ? 'sent': 'received';
+  const messageClass = uid === auth.currentUser.uid ? 'sent': 'received';
 
   return (
     <div className={`message ${messageClass}`}>
